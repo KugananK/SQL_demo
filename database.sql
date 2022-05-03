@@ -10,12 +10,12 @@ FirstHand INT(1) NOT NULL,
 PRIMARY KEY(Product_id)
 );
 
-CREATE TABLE OrderTable(
+CREATE TABLE Orders(
 Order_id INT NOT NULL UNIQUE AUTO_INCREMENT,
 TimePlaced TIMESTAMP NOT NULL,
 OrderValue DECIMAL NOT NULL,
 ProductsOrdered varchar(255),
-fk_product_id INT UNIQUE,
+fk_product_id INT NOT NULL,
 PRIMARY KEY(Order_id),
 FOREIGN KEY(fk_product_id) REFERENCES Product (Product_id)
 );
@@ -32,7 +32,7 @@ HouseNumber INT NOT NULL,
 AddressLine1 varchar(255) NOT NULL,
 City varchar(255),
 Postcode varchar(8) NOT NULL,
-fk_order_id INT UNIQUE,
+fk_order_id INT NOT NULL,
 PRIMARY KEY(Customer_id),
-FOREIGN KEY(fk_order_id) REFERENCES OrderTable (Order_id)
+FOREIGN KEY(fk_order_id) REFERENCES Orders (Order_id)
 );
